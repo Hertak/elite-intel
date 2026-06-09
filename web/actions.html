@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Translate Actions</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <main class="page-shell" data-page="actions">
+    <header class="page-header">
+      <div>
+        <a class="back-link" href="./index.html">← Back</a>
+        <h1>Translate Actions</h1>
+        <p>Load AI action alias files and validate action-by-action phrases.</p>
+      </div>
+      <div class="header-actions">
+        <button id="validateActionsButton" type="button">Validate</button>
+        <button id="exportActionsButton" type="button" class="secondary">Export Translation</button>
+        <button id="exportActionsDoubtsButton" type="button" class="secondary">Export Doubts</button>
+      </div>
+    </header>
+
+    <section class="loader-grid">
+      <label class="file-card" id="actionsOriginalCard">
+        <span>Original file</span>
+        <input id="actionsOriginalInput" type="file" accept=".java,text/plain" />
+        <strong id="actionsOriginalName">Not loaded</strong>
+      </label>
+      <label class="file-card" id="actionsTranslatedCard">
+        <span>Translated file</span>
+        <input id="actionsTranslatedInput" type="file" accept=".java,text/plain" />
+        <strong id="actionsTranslatedName">Not loaded</strong>
+      </label>
+    </section>
+
+    <section class="summary-bar" id="actionsSummary"></section>
+
+    <section class="toolbar">
+      <div class="filter-group" id="actionsFilters">
+        <button data-filter="all" class="active" type="button">All</button>
+        <button data-filter="error" type="button">Only Errors</button>
+        <button data-filter="missing" type="button">Only Missing</button>
+        <button data-filter="changed" type="button">Only Changed</button>
+        <button data-filter="doubt" type="button">Only Doubts</button>
+      </div>
+      <input id="actionsSearchInput" type="search" placeholder="Search action or alias..." />
+    </section>
+
+    <section class="cards-shell" id="actionsCards">
+      <article class="empty-state card-empty">Load files to start comparing actions.</article>
+    </section>
+  </main>
+
+  <script src="./assets/app.js"></script>
+  <script src="./assets/parsers/actions-parser.js"></script>
+  <script src="./assets/validators/actions-validator.js"></script>
+  <script src="./assets/exporters/actions-exporter.js"></script>
+  <script src="./assets/actions.js"></script>
+</body>
+</html>

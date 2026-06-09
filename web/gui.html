@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Translate GUI</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <main class="page-shell" data-page="gui">
+    <header class="page-header">
+      <div>
+        <a class="back-link" href="./index.html">← Back</a>
+        <h1>Translate GUI</h1>
+        <p>Load the source, translated, and optional reference properties files.</p>
+      </div>
+      <div class="header-actions">
+        <button id="validateGuiButton" type="button">Validate</button>
+        <button id="exportGuiButton" type="button" class="secondary">Export Translation</button>
+        <button id="exportGuiDoubtsButton" type="button" class="secondary">Export Doubts</button>
+      </div>
+    </header>
+
+    <section class="loader-grid">
+      <label class="file-card" id="guiOriginalCard">
+        <span>Original file</span>
+        <input id="guiOriginalInput" type="file" accept=".properties,text/plain" />
+        <strong id="guiOriginalName">Not loaded</strong>
+      </label>
+      <label class="file-card" id="guiTranslatedCard">
+        <span>Translated file</span>
+        <input id="guiTranslatedInput" type="file" accept=".properties,text/plain" />
+        <strong id="guiTranslatedName">Not loaded</strong>
+      </label>
+    </section>
+
+    <section class="summary-bar" id="guiSummary"></section>
+
+    <section class="toolbar">
+      <div class="filter-group" id="guiFilters">
+        <button data-filter="all" class="active" type="button">All</button>
+        <button data-filter="error" type="button">Only Errors</button>
+        <button data-filter="missing" type="button">Only Missing</button>
+        <button data-filter="changed" type="button">Only Changed</button>
+        <button data-filter="doubt" type="button">Only Doubts</button>
+      </div>
+      <input id="guiSearchInput" type="search" placeholder="Search key or text..." />
+    </section>
+
+    <section class="table-shell">
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Key</th>
+            <th>English</th>
+            <th>Spanish</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="guiTableBody">
+          <tr>
+            <td colspan="5" class="empty-state">Load files to start comparing translations.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="./assets/app.js"></script>
+  <script src="./assets/parsers/properties-parser.js"></script>
+  <script src="./assets/validators/properties-validator.js"></script>
+  <script src="./assets/exporters/properties-exporter.js"></script>
+  <script src="./assets/gui.js"></script>
+</body>
+</html>
