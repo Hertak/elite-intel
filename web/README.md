@@ -1,12 +1,12 @@
 # Elite Intel Translation Helper
 
-Small client-side helper to compare and validate localization files.
+Small client-side helper to compare and validate original and translation files.
 
 ## Pages
 
 - `index.html` — start screen
-- `gui.html` — compare `.properties` files
-- `actions.html` — compare AI action alias Java files
+- `gui.html` — compare original and translation `.properties` files
+- `actions.html` — compare original and translation AI action alias Java files
 
 ## Usage
 

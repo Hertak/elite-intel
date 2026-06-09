@@ -98,7 +98,7 @@ function renderSummary() {
 
 function renderCards() {
   if (!state.rows.length) {
-    els.cards.innerHTML = `<article class="empty-state card-empty">Load files to start comparing actions.</article>`;
+    els.cards.innerHTML = `<article class="empty-state card-empty">Load files to start comparing original and translation action aliases.</article>`;
     return;
   }
 
@@ -120,11 +120,11 @@ function renderCards() {
 
       <div class="card-grid">
         <div class="column">
-          <label>English aliases</label>
+          <label>Original aliases</label>
           <textarea readonly>${escapeHtml(row.english)}</textarea>
         </div>
         <div class="column">
-          <label>Spanish aliases</label>
+          <label>Translation aliases</label>
           <textarea data-field="spanish">${escapeHtml(row.spanish)}</textarea>
         </div>
       </div>
@@ -182,8 +182,8 @@ function exportCurrent() {
 function exportDoubts() {
   const text = collectDoubts(state.rows, (row, idx) => [
     `## ${idx}. ${row.action} (#${row.order})`,
-    `- Source English phrase: ${row.english || "(missing)"}`,
-    `- Current Spanish phrase: ${row.spanish || "(empty)"}`,
+    `- Original phrase: ${row.english || "(missing)"}`,
+    `- Translation phrase: ${row.spanish || "(empty)"}`,
     `- Note: ${row.note || "(none)"}`,
   ]);
   downloadText("translation_doubts_actions_en.md", text);

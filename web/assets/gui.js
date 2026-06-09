@@ -98,7 +98,7 @@ function renderSummary() {
 
 function renderTable() {
   if (!state.rows.length) {
-    els.tableBody.innerHTML = `<tr><td colspan="5" class="empty-state">Load files to start comparing translations.</td></tr>`;
+    els.tableBody.innerHTML = `<tr><td colspan="5" class="empty-state">Load files to start comparing original and translation values.</td></tr>`;
     return;
   }
 
@@ -155,8 +155,8 @@ function exportCurrent() {
 function exportDoubts() {
   const text = collectDoubts(state.rows, (row, idx) => [
     `## ${idx}. ${row.key}`,
-    `- Source English phrase: ${row.english || "(missing)"}`,
-    `- Current Spanish phrase: ${row.spanish || "(empty)"}`,
+    `- Original phrase: ${row.english || "(missing)"}`,
+    `- Translation phrase: ${row.spanish || "(empty)"}`,
     `- Note: ${row.note || "(none)"}`,
   ]);
   downloadText("translation_doubts_gui_en.md", text);
