@@ -4,30 +4,20 @@ Small client-side helper to compare and validate original and translation files.
 
 ## Pages
 
-- `index.html` — start screen
-- `gui.html` — compare original and translation `.properties` files
-- `actions.html` — compare original and translation AI action alias Java files
+- `web/index.html` — start screen
+- `web/gui.html` — compare original and translation `.properties` files
+- `web/actions.html` — compare original and translation AI action alias Java files
 
 ## Usage
 
-Open `index.html` in the browser and load files manually.
-
-Recommended file sets:
-
-### GUI
-- Original: `gui.properties`
-- Translated: `gui_sp.properties`
-
-### Actions
-- Original: `EnglishAiActionAliases.java`
-- Translated: `SpanishAiActionAliases.java`
+Open `web/index.html` in the browser and load your files manually.
 
 ## Current scope
 
 - client-side only
 - no database
 - validation-first workflow
-- export translated file
+- export translation file
 - export doubts markdown
 
 ## Known limitations

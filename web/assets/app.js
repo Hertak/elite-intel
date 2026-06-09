@@ -38,8 +38,24 @@ function placeholdersOf(value = "") {
   return [...value.matchAll(/\{[^}]+\}/g)].map((match) => match[0]).sort();
 }
 
+function placeholderSignature(placeholder = "") {
+  const inner = placeholder.slice(1, -1).trim();
+  const messageFormatMatch = inner.match(/^(\d+)\s*(?:,\s*([a-zA-Z]+)\b.*)?$/);
+
+  if (messageFormatMatch) {
+    const [, index, formatType] = messageFormatMatch;
+    return `mf:${index}:${(formatType ?? "arg").toLowerCase()}`;
+  }
+
+  return `raw:${inner}`;
+}
+
+function placeholderSignaturesOf(value = "") {
+  return placeholdersOf(value).map(placeholderSignature).sort();
+}
+
 function samePlaceholders(a = "", b = "") {
-  return JSON.stringify(placeholdersOf(a)) === JSON.stringify(placeholdersOf(b));
+  return JSON.stringify(placeholderSignaturesOf(a)) === JSON.stringify(placeholderSignaturesOf(b));
 }
 
 function makeStatusLabel(level, text) {
@@ -78,6 +94,7 @@ window.TranslationApp = {
   escapeHtml,
   normalizeText,
   placeholdersOf,
+  placeholderSignaturesOf,
   samePlaceholders,
   makeStatusLabel,
   summaryMarkup,
